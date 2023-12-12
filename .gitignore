@@ -34,3 +34,5 @@
 test/*
 public/
 
+.tool-versions
+.rspec
