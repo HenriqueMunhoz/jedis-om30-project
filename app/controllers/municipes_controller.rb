@@ -4,10 +4,8 @@ class MunicipesController < ApplicationController
   def index
     Municipe.reindex
 
-    params[:search] = '*' if params[:search].blank?
-
     @municipes = Municipe.search(
-      params[:search],
+      params[:search].blank? ? '*' : params[:search],
       page: params[:page], per_page: 20
     )
   end
