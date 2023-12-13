@@ -49,6 +49,12 @@ gem "bootstrap"
 
 gem "sassc-rails"
 
+gem "searchkick"
+gem "elasticsearch", "~> 7.17.8"
+
+gem "kaminari"
+gem 'rails-controller-testing'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

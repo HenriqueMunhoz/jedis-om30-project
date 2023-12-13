@@ -1,4 +1,6 @@
 class Municipe < ApplicationRecord
+  searchkick
+
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address, allow_destroy: true
 
@@ -16,7 +18,7 @@ class Municipe < ApplicationRecord
   end
 
   def valid_cns?
-    errors.add(:cns, :invalid) unless cns.strip.length == 15
+    errors.add(:cns, :invalid) unless cns.delete(' ').strip.length == 15
   end
 
   def translated_status

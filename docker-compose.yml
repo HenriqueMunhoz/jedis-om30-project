@@ -22,12 +22,25 @@ services:
       DB_NAME: jedis-om30-dev
       DB_USERNAME: admin
       DB_PASSWORD: password
+      ELASTICSEARCH_URL: http://elasticsearch:9200
     volumes:
       - .:/app:cached
     ports:
       - "3000:3000"
     depends_on:
       - db
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.8
+    volumes:
+      - .:/app
+    ports:
+      - 9200:9200
+    environment:
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
 volumes:
   postgres_data: {}
 networks:

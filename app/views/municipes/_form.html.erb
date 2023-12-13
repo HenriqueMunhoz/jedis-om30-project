@@ -43,7 +43,7 @@
         <%= errors_for(form, :photo) %>
       </div>
 
- <%= form.fields_for :address, municipe.address || municipe.build_address do |address_subform| %>
+  <%= form.fields_for :address, municipe.address || municipe.build_address do |address_subform| %>
          <div class="col">
           <%= address_subform.label :street, 'Rua', style: "display: block" %>
           <%= address_subform.text_field :street, class: "form-control" %>
@@ -79,7 +79,7 @@
             <%= address_subform.text_field :complement, class: "form-control" %>
           </div>
           <div class="col">
-            <%= address_subform.label :ibge_code, 'Codigo IBGE', style: "display: block" %>
+            <%= address_subform.label :ibge_code, 'Código IBGE', style: "display: block" %>
             <%= address_subform.text_field :ibge_code, class: "form-control" %>
           </div>
         </div>

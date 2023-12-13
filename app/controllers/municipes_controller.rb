@@ -2,7 +2,12 @@ class MunicipesController < ApplicationController
   before_action :set_municipe, only: [:edit, :update]
 
   def index
-    @municipes = Municipe.all
+    Municipe.reindex
+    params[:search] = '*' if params[:search].blank?
+    @municipes = Municipe.search(
+      params[:search],
+      page: params[:page], per_page: 20
+    )
   end
 
   def new
@@ -20,7 +25,6 @@ class MunicipesController < ApplicationController
         format.html { redirect_to municipes_path, notice: 'Municipe foi criado com sucesso' }
         format.json { render :index, status: :created, location: @municipe }
       else
-        # Recriar o objeto de endereço se não passar na validação
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @municipe.errors, status: :unprocessable_entity }
       end
