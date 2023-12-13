@@ -15,4 +15,8 @@ class Municipe < ApplicationRecord
   def valid_cns?
     errors.add(:cns, :invalid) unless cns.strip.length == 15
   end
+
+  def translated_status
+    status ? 'Ativo' : 'Inativo'
+  end
 end

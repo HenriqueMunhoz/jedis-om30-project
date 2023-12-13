@@ -1,0 +1,45 @@
+<%= form_with(model: municipe, html: { data: { controller: "masks" } }) do |form| %>
+  <div class="row">
+    <div class="col-12 card p-3 class">
+      <div class="row mb-2">
+        <div class="col">
+          <%= form.label :full_name, 'Nome', style: "display: block" %>
+          <%= form.text_field :full_name, class: "form-control" %>
+          <%= errors_for(form, :full_name) %>
+        </div>
+        <div class="col">
+          <%= form.label :cns, 'CNS', style: "display: block" %>
+          <%= form.text_field :cns, class: "form-control" %>
+          <%= errors_for(form, :cns) %>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col">
+          <%= form.label :cpf, 'CPF', style: "display: block" %>
+          <%= form.text_field :cpf, class: "form-control", data: { masks_target: 'cpf' } %>
+          <%= errors_for(form, :cpf) %>
+        </div>
+        <div class="col-6">
+          <%= form.label :birth_date, 'Data de nasc.', style: "display: block" %>
+          <%= form.date_field :birth_date, class: "form-control" %>
+          <%= errors_for(form, :birth_date) %>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col">
+          <%= form.label :email, style: "display: block" %>
+          <%= form.text_field :email, class: "form-control" %>
+          <%= errors_for(form, :email) %>
+        </div>
+        <div class="col">
+          <%= form.label :phone, 'Celular', style: "display: block" %>
+          <%= form.text_field :phone, class: "form-control", data: { masks_target: 'phone' } %>
+          <%= errors_for(form, :phone) %>
+        </div>
+      </div>
+      <div class="mt-3">
+        <%= form.submit 'Salvar', class: "btn btn-primary text-white" %>
+      </div>
+    </div>
+  </div>
+<% end %>
