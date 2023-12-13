@@ -8,7 +8,7 @@ class CreateMunicipes < ActiveRecord::Migration[7.0]
       t.date :birth_date
       t.string :phone
       t.string :photo
-      t.boolean :status, null: false, default: false
+      t.boolean :status, default: false
 
       t.timestamps
     end

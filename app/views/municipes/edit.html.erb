@@ -1,0 +1,31 @@
+<%= form_with(model: @municipe, local: true) do |form| %>
+  <%= form.label :nome_completo %>
+  <%= form.text_field :nome_completo %>
+
+  <%= form.label :cpf %>
+  <%= form.text_field :cpf %>
+
+  <%= form.label :cns %>
+  <%= form.text_field :cns %>
+
+  <%= form.label :email %>
+  <%= form.email_field :email %>
+
+  <%= form.label :data_nascimento %>
+  <%= form.date_field :data_nascimento %>
+
+  <%= form.label :telefone %>
+  <%= form.telephone_field :telefone %>
+
+  <%= form.label :foto %>
+  <%= form.file_field :foto %>
+
+  <%= form.label :status %>
+  <%= form.select :status, ['Ativo', 'Inativo'] %>
+
+  <%= form.fields_for :addresses do |address_form| %>
+    <!-- Address fields here -->
+  <% end %>
+
+  <%= form.submit %>
+<% end %>

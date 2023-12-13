@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :address do
-    zip_cone { Faker::Address.zip_code }
+    zip_code { Faker::Address.zip_code }
     street { Faker::Address.street_name }
     complement { Faker::Address.secondary_address }
     neighborhood { Faker::Address.community }

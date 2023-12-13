@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Municipes</h1>
+  </div>
+</div>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Nome Completo</th>
+        <th class="text-center">CPF</th>
+        <th class="text-center">CNS</th>
+        <th class="text-center">Email</th>
+        <th class="text-center">Data de Nascimento</th>
+        <th class="text-center">Telefone</th>
+        <th class="text-center">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @municipes.each do |municipe| %>
+        <tr>
+        <td><%= municipe.nome_completo %></td>
+        <td><%= municipe.cpf %></td>
+        <td><%= municipe.cns %></td>
+        <td><%= municipe.email %></td>
+        <td><%= municipe.data_nascimento %></td>
+        <td><%= municipe.telefone %></td>
+        <td><%= municipe.status %></td>
+          <td class="text-center">
+            <%= link_to "Show", post_path(post), class: 'label label-info'%>
+            <%= link_to "Edit", edit_post_path(post), class: 'label label-success'%>
+            <%= link_to "Delete", @post, method: :destroy, data: { confirm: "Are you sure?" }, class: 'label label-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
