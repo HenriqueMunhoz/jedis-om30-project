@@ -1,5 +1,5 @@
 class MunicipesController < ApplicationController
-  before_action :set_municipe, only: %i[ edit update destroy ]
+  before_action :set_municipe, only: %i[edit update]
 
   def index
     @municipes = Municipe.all
@@ -7,6 +7,7 @@ class MunicipesController < ApplicationController
 
   def new
     @municipe = Municipe.new
+    @municipe.build_address
   end
 
   def edit
@@ -17,9 +18,10 @@ class MunicipesController < ApplicationController
 
     respond_to do |format|
       if @municipe.save
-        format.html { redirect_to municipe_path, notice: "Municipe foi criado com sucesso" }
+        format.html { redirect_to municipes_path, notice: "Municipe foi criado com sucesso" }
         format.json { render :index, status: :created, location: @municipe }
       else
+        # Recriar o objeto de endereço se não passar na validação
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @municipe.errors, status: :unprocessable_entity }
       end
@@ -29,7 +31,7 @@ class MunicipesController < ApplicationController
   def update
     respond_to do |format|
       if @municipe.update(municipe_params)
-        format.html { redirect_to municipe_path, notice: "Municipe foi editado com sucesso" }
+        format.html { redirect_to municipes_path, notice: "Municipe foi editado com sucesso" }
         format.json { render :index, status: :ok, location: @municipe }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -46,7 +48,7 @@ class MunicipesController < ApplicationController
     def municipe_params
       params.require(:municipe).permit(
         :full_name, :cpf, :cns, :email, :birth_date, :phone, :photo, :status,
-        addresses_attributes: [:zip_code, :street, :neighborhood, :city, :state]
+        address_attributes: [:id, :zip_code, :street, :neighborhood, :city, :state]
       )
     end
 end
