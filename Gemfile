@@ -45,6 +45,10 @@ gem "bootsnap", require: false
 gem "cpf_cnpj"
 gem 'email_validator'
 
+gem "bootstrap"
+
+gem "sassc-rails"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
