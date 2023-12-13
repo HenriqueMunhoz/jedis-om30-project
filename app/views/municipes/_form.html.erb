@@ -1,5 +1,4 @@
 <%= form_with(model: municipe, html: { data: { controller: "masks" } }) do |form| %>
-<%=@municipe.errors.to_json%>
   <div class="row">
     <div class="col-12 card p-3 class">
       <div class="row mb-2">
@@ -10,7 +9,7 @@
         </div>
         <div class="col">
           <%= form.label :cns, 'CNS', style: "display: block" %>
-          <%= form.text_field :cns, class: "form-control" %>
+          <%= form.text_field :cns, class: "form-control", data: { masks_target: 'cns' } %>
           <%= errors_for(form, :cns) %>
         </div>
       </div>
@@ -38,33 +37,50 @@
           <%= errors_for(form, :phone) %>
         </div>
       </div>
+      <div class="col">
+        <%= form.label :photo, 'URL foto', style: "display: block" %>
+        <%= form.text_field :photo, class: "form-control" %>
+        <%= errors_for(form, :photo) %>
+      </div>
 
  <%= form.fields_for :address, municipe.address || municipe.build_address do |address_subform| %>
+         <div class="col">
+          <%= address_subform.label :street, 'Rua', style: "display: block" %>
+          <%= address_subform.text_field :street, class: "form-control" %>
+          <%= errors_for(form, 'address.street') %>
+        </div>
         <div class="row mb-2">
           <div class="col">
-            <%= address_subform.label :zip_code, style: "display: block" %>
+            <%= address_subform.label :zip_code, 'CEP', style: "display: block" %>
             <%= address_subform.text_field :zip_code, class: "form-control" %>
             <%= errors_for(form, 'address.zip_code') %>
           </div>
           <div class="col">
-            <%= address_subform.label :street, style: "display: block" %>
-            <%= address_subform.text_field :street, class: "form-control" %>
-            <%= errors_for(form, 'address.street') %>
-          </div>
-          <div class="col">
-            <%= address_subform.label :neighborhood, style: "display: block" %>
+            <%= address_subform.label :neighborhood, 'Bairro', style: "display: block" %>
             <%= address_subform.text_field :neighborhood, class: "form-control" %>
             <%= errors_for(form, 'address.neighborhood') %>
           </div>
+        </div>
+        <div class="row mb-2">
           <div class="col">
-            <%= address_subform.label :city, style: "display: block" %>
+            <%= address_subform.label :city, 'Cidade', style: "display: block" %>
             <%= address_subform.text_field :city, class: "form-control" %>
             <%= errors_for(form, 'address.city') %>
           </div>
           <div class="col">
-            <%= address_subform.label :state, style: "display: block" %>
+            <%= address_subform.label :state, 'Estado', style: "display: block" %>
             <%= address_subform.text_field :state, class: "form-control" %>
             <%= errors_for(form, 'address.state') %>
+          </div>
+        </div>
+      <div class="row mb-2">
+          <div class="col">
+            <%= address_subform.label :complement, 'Complemento', style: "display: block" %>
+            <%= address_subform.text_field :complement, class: "form-control" %>
+          </div>
+          <div class="col">
+            <%= address_subform.label :ibge_code, 'Codigo IBGE', style: "display: block" %>
+            <%= address_subform.text_field :ibge_code, class: "form-control" %>
           </div>
         </div>
       <% end %>
