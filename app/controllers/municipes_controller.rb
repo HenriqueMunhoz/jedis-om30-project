@@ -19,7 +19,7 @@ class MunicipesController < ApplicationController
   def create
     @municipe = Municipe.new(municipe_params)
     if @municipe.save
-      redirect_to @municipe
+      render :index
     else
       render :new
     end

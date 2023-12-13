@@ -1,45 +1,46 @@
-<%= form_with(model: @municipe, local: true) do |form| %>
-  <%= form.label :nome_completo %>
-  <%= form.text_field :nome_completo %>
+  <%#= form.fields_for :address do |address_form| %>
 
-  <%= form.label :cpf %>
-  <%= form.text_field :cpf %>
+<%= form_with(model: @municipe, local: true) do |f| %>
+<div class="card">
+  <div class="card-body">
 
-  <%= form.label :cns %>
-  <%= form.text_field :cns %>
+    <div class="mb-3">
+      <%= f.label :full_name, { class: "form-label"} %>
+      <%= f.text_field :full_name, { class: "form-control", placeholder: "Full name" } %>
+    </div>
 
-  <%= form.label :email %>
-  <%= form.email_field :email %>
+    <div class="mb-3">
+      <%= f.label :cpf, { class: "form-label"} %>
+      <%= f.text_field :cpf, { class: "form-control", placeholder: "Full name" } %>
+    </div>
 
-  <%= form.label :birth_day %>
-  <%= form.date_field :birth_day %>
+    <div class="mb-3">
+      <%= f.label :cns, { class: "form-label"} %>
+      <%= f.text_field :cns, { class: "form-control", placeholder: "CNS" } %>
+    </div>
 
-  <%= form.label :phone %>
-  <%= form.telephone_field :phone %>
+    <div class="mb-3">
+      <%= f.label :email, { class: "form-label"} %>
+      <%= f.email_field :email, { class: "form-control", placeholder: "email" } %>
+    </div>
 
-  <%= form.label :photo %>
-  <%= form.file_field :photo %>
+    <div class="mb-3">
+      <%= f.label :birth_date, { class: "form-label"} %>
+      <%= f.date_field :birth_date, { class: "form-control" } %>
+    </div>
 
-  <%= form.label :status %>
-  <%= form.select :status, ['Ativo', 'Inativo'] %>
+    <div class="mb-3">
+      <%= f.label :phone, { class: "form-label"} %>
+      <%= f.telephone_field :phone, { class: "form-control", placeholder: "telefone" } %>
+    </div>
 
-  <%= form.fields_for :address do |address_form| %>
-    <%= address_form.label :zip_code %>
-    <%= address_form.text_field :zip_code %>
+    <div class="mb-3">
+      <%= f.label :photo, { class: "form-label"} %>
+      <%= f.text_field :photo, { class: "form-control", placeholder: "Full name" } %>
+    </div>
 
-    <%= address_form.label :street %>
-    <%= address_form.text_field :street %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
 
-
-    <%= address_form.label :neighborhood %>
-    <%= address_form.text_field :neighborhood %>
-
-    <%= address_form.label :city %>
-    <%= address_form.text_field :city %>
-
-    <%= address_form.label :state %>
-    <%= address_form.text_field :state %>
-  <% end %>
-
-  <%= form.submit %>
+  </div>
+</div>
 <% end %>
